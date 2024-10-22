@@ -9,6 +9,7 @@
 - [x] attatch datbase to ui
 - [x] add auth (clerk)
 - [ ] add upload
+- [ ] "taint" (server)
 - [ ] error management (w/ sentry)
 - [ ] route image page (parralel)
 - [ ] ddedlete button (server actions)
