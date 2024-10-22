@@ -8,7 +8,7 @@
 - [x] steup a database (vercel postgres)
 - [x] attatch datbase to ui
 - [x] add auth (clerk)
-- [ ] add upload
+- [x] add upload
 - [ ] "taint" (server)
 - [ ] error management (w/ sentry)
 - [ ] route image page (parralel)
