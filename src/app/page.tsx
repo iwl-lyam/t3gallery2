@@ -4,28 +4,18 @@ import {headers} from "next/headers";
 
 export const dynamic = "force-dynamic"
 
-const mockUrls = [
-    "https://utfs.io/f/S7crvkfPCEa3hjfB5WTmfea81QNWCowFJBdbV3njkApciIZy",
-    "https://utfs.io/f/S7crvkfPCEa3WQhFwjmuLsrZg1TQBJVblHtGmz237DfM6Ueh",
-    "https://utfs.io/f/S7crvkfPCEa3xDEv490GRjrVWgf13bB6svDUhEpSmZJq9Ile"
-]
-
-const mockImages = mockUrls.map((url, index) => ({
-    id: index+1,
-    url,
-}))
-
 export default async function HomePage() {
     headers()
-    const posts = await db.query.posts.findMany()
-    console.log(posts)
+    const images = await db.query.images.findMany({
+        orderBy: (model, { asc }) => asc(model.id)
+    })
     return (
     <main>
         <div className={"flex flex-wrap gap-4 items-center justify-between p-4"}>
-            {posts.map((post) => (<div key={post.id}>{post.name}</div>))}
-            {[...mockImages, ...mockImages, ...mockImages].map((image, index) => (
-                <div key={image.id + "-" + index} className="w-48">
+            {images.map((image, index) => (
+                <div key={image.id + "-" + index} className="w-48 flex flex-col">
                     <img src={image.url} />
+                    <div>{image.name}</div>
                 </div>
             ))
         }</div>
